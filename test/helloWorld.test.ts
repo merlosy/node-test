@@ -24,3 +24,20 @@ describe('baseRoute', () => {
   });
 
 });
+
+describe('GET api/v1/github', () => {
+
+  it('responds with single JSON object', (done) => {
+    chai.request(app).get('/api/v1/repos')
+      .then(res => {
+        expect(res.status).to.equal(200);
+        expect(res).to.be.json;
+        expect(res.body.length).to.be.greaterThan(0);
+        done();
+      })
+      .catch(function (err) {
+        done(err);
+      });
+  });
+
+});
